@@ -1,0 +1,15 @@
+﻿/* фиксированнй заголовок */
+.mat-header-row {
+    padding-top: 10px;
+    position: sticky;
+    top: 0;
+    background-color: inherit;
+    position: -webkit-sticky;
+}
+
+mat-table {
+    height: 400px;
+    overflow: auto;
+}
+/* ~~~~~~~~~~~~~~~~~~~~~~ */
+

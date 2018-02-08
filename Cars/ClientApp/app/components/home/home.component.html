@@ -1,0 +1,72 @@
+<button class="mat-button" mat-button="" (click)="checkPaginator()">
+    <span class="mat-button-wrapper">Click me!</span>
+    <div class="mat-button-ripple mat-ripple" matripple="">
+    </div>
+    <div class="mat-button-focus-overlay"></div>
+</button>
+
+<div class="example-container mat-elevation-z8">
+    <mat-table id="carTable" #table [dataSource]="dataSource" matSort>
+
+        <!-- Position Column -->
+        <ng-container matColumnDef="position">
+            <mat-header-cell *matHeaderCellDef>  
+                <div mat-sort-header>Id</div>
+
+                <mat-form-field floatPlaceholder="never">
+                    <mat-icon matPrefix></mat-icon>
+                    <input matInput>
+                </mat-form-field>
+            </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.id}} </mat-cell>
+        </ng-container>
+
+        <!-- Name Column -->
+        <ng-container matColumnDef="name">
+            <mat-header-cell *matHeaderCellDef>
+                <div mat-sort-header>Model</div>
+
+                <mat-form-field floatPlaceholder="never">
+                    <mat-icon matPrefix></mat-icon>
+                    <input matInput>
+                </mat-form-field>
+            </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.model}} </mat-cell>
+        </ng-container>
+
+        <!-- Weight Column -->
+        <ng-container matColumnDef="weight">
+            <mat-header-cell *matHeaderCellDef>
+                <div mat-sort-header>Produced</div>
+
+                <mat-form-field>
+                    <input matInput [matDatepickerFilter]="myFilter" [matDatepicker]="myDatepicker">
+                    <mat-datepicker-toggle matSuffix [for]="myDatepicker"></mat-datepicker-toggle>
+                    <mat-datepicker #myDatepicker></mat-datepicker>
+                </mat-form-field>
+            </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.produced}} </mat-cell>
+        </ng-container>
+
+        <!-- Symbol Column -->
+        <ng-container matColumnDef="symbol">
+            <mat-header-cell *matHeaderCellDef>
+                <div mat-sort-header>Speed</div>
+
+                <mat-form-field floatPlaceholder="never">
+                    <mat-icon matPrefix></mat-icon>
+                    <input matInput>
+                </mat-form-field>
+            </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.speed}} </mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+
+    <mat-paginator #paginator
+                   [pageSize]="10"
+                   [pageSizeOptions]="[5, 10, 20]">
+    </mat-paginator>
+</div>
